@@ -3,6 +3,16 @@ use std::{hash::Hasher, io};
 pub trait TryHash {
     type Error;
     fn try_hash<H: Hasher>(&self, state: &mut H) -> Result<(), Self::Error>;
+    fn direct_hash(&self) -> Result<u64, Self::Error> {
+        hash::<Self>(&self)
+    }
+}
+
+pub fn hash<T: TryHash + ?Sized>(x: &T) -> Result<u64, T::Error> {
+    use std::collections::hash_map::DefaultHasher;
+    let mut hasher = DefaultHasher::new();
+    x.try_hash(&mut hasher)?;
+    Ok(hasher.finish())
 }
 
 pub struct HashWriter<'a, T: Hasher>(pub &'a mut T);

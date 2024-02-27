@@ -4,6 +4,25 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.79"
+async-trait = "0.1.77"
+base64 = "0.21.7"
 clap = { version = "4.4.13", features = ["derive"] }
-tokio = { version = "1.35.1", features = ["rt", "macros"] }
+extension-traits = "1.0.1"
+hex = "0.4.3"
+internment = { version = "0.7.4", features = ["arena", "intern", "arc"] }
+memoize = "0.4.2"
+nix-nar = "0.3.0"
+nom = "7.1.3"
+once_cell = "1.19.0"
+petgraph = "0.6.4"
+refcount-interner = "0.2.4"
+semver = "1.0.21"
+sha2 = "0.10.8"
+ssri = "9.2.0"
+tempfile = "3.9.0"
+thiserror = "1.0.56"
+tokio = { version = "1.35.1", features = ["rt", "macros", "process", "sync"] }
+typed-arena = "2.0.2"
+url = "2.5.0"
 
